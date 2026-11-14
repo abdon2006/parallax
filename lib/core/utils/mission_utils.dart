@@ -61,6 +61,7 @@ class MissionFilter {
     }
   }
 
+  /// identify the weak condition on the selected sites
   static Map<String, int> conditionImpactCounts(
     List<SiteModel> sites, {
     required String statusFilter,

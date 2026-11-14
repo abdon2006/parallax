@@ -4,7 +4,7 @@ import 'package:parallax/core/constants/app_colors.dart';
 abstract final class AppTypography {
   static const String fontFamily = 'Outfit';
 
-  static const TextStyle screenTitle = TextStyle(
+  static TextStyle get screenTitle => const TextStyle(
     fontFamily: fontFamily,
     fontSize: 30,
     fontWeight: FontWeight.w700,
@@ -12,7 +12,7 @@ abstract final class AppTypography {
     color: AppColors.textPrimary,
   );
 
-  static const TextStyle sectionTitle = TextStyle(
+  static TextStyle get sectionTitle => const TextStyle(
     fontFamily: fontFamily,
     fontSize: 20,
     fontWeight: FontWeight.w600,
@@ -20,7 +20,7 @@ abstract final class AppTypography {
     color: AppColors.textPrimary,
   );
 
-  static const TextStyle cardTitle = TextStyle(
+  static TextStyle get cardTitle => const TextStyle(
     fontFamily: fontFamily,
     fontSize: 16,
     fontWeight: FontWeight.w600,
@@ -28,7 +28,7 @@ abstract final class AppTypography {
     color: AppColors.textPrimary,
   );
 
-  static const TextStyle body = TextStyle(
+  static TextStyle get body => const TextStyle(
     fontFamily: fontFamily,
     fontSize: 14,
     fontWeight: FontWeight.w400,
@@ -36,7 +36,7 @@ abstract final class AppTypography {
     color: AppColors.textSecondary,
   );
 
-  static const TextStyle caption = TextStyle(
+  static TextStyle get caption => const TextStyle(
     fontFamily: fontFamily,
     fontSize: 12,
     fontWeight: FontWeight.w400,
@@ -44,14 +44,14 @@ abstract final class AppTypography {
     color: AppColors.textMuted,
   );
 
-  static const TextStyle button = TextStyle(
+  static TextStyle get button => const TextStyle(
     fontFamily: fontFamily,
     fontSize: 15,
     fontWeight: FontWeight.w600,
     color: AppColors.background,
   );
 
-  static const TextStyle score = TextStyle(
+  static TextStyle get score => const TextStyle(
     fontFamily: fontFamily,
     fontSize: 24,
     fontWeight: FontWeight.w700,
