@@ -14,6 +14,7 @@ class AnalogsData {
 
   List<String> get targets => sites.keys.toList(growable: false);
 
+  /// declare the search goal moon or mars ?
   List<SiteModel> sitesFor(String target) => sites[target] ?? const [];
 
   SiteModel? findSite(int siteId) {
