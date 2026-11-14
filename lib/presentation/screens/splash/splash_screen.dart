@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen>
       end: 1,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
     _controller.forward();
-    Future<void>.delayed(const Duration(milliseconds: 2200), () {
+    Future<void>.delayed(const Duration(milliseconds: 3000), () {
       if (mounted) context.go('/home');
     });
   }

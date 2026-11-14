@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:parallax/core/constants/app_colors.dart';
 import 'package:parallax/core/constants/condition_catalog.dart';
 import 'package:parallax/core/utils/mission_utils.dart';
+import 'package:parallax/core/widgets/app_animated_entry.dart';
 import 'package:parallax/core/widgets/app_background.dart';
 import 'package:parallax/core/widgets/app_states.dart';
 import 'package:parallax/data/models/analogs_data.dart';
@@ -79,6 +80,7 @@ class _FineTuneContent extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: const Text('Fine-tune profile'),
         actions: [
           TextButton(
@@ -92,7 +94,7 @@ class _FineTuneContent extends StatelessWidget {
         ],
       ),
       body: AppBackground(
-        imageOpacity: 0.1,
+        imageOpacity: 1,
         child: ListView(
           padding: const EdgeInsets.fromLTRB(20, 8, 20, 130),
           children: [
@@ -106,32 +108,25 @@ class _FineTuneContent extends StatelessWidget {
               lowRiskOnly: mission.lowRiskOnly,
             ),
             const SizedBox(height: 20),
-            const Text(
-              'WHAT CAN\'T YOU COMPROMISE ON?',
-              style: TextStyle(
-                color: AppColors.textMuted,
-                fontSize: 10,
-                letterSpacing: 1.3,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            const SizedBox(height: 6),
+
             const Text(
               'Select the conditions that matter most. Sites with a reported weakness in any selected condition will be hidden.',
               style: TextStyle(
                 color: AppColors.textSecondary,
-                fontSize: 11,
+                fontSize: 12,
                 height: 1.4,
               ),
             ),
             const SizedBox(height: 14),
             for (final group in conditionGroups) ...[
-              _ConditionGroupCard(
-                group: group,
-                selectedConditions: mission.conditions,
-                impacts: impacts,
-                onToggle: (key) => context.read<MissionBloc>().add(
-                  MissionConditionToggled(key),
+              AppAnimatedEntry(
+                child: _ConditionGroupCard(
+                  group: group,
+                  selectedConditions: mission.conditions,
+                  impacts: impacts,
+                  onToggle: (key) => context.read<MissionBloc>().add(
+                    MissionConditionToggled(key),
+                  ),
                 ),
               ),
               const SizedBox(height: 10),
@@ -235,9 +230,9 @@ class _TargetButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(11),
+      borderRadius: BorderRadius.circular(12),
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 500),
         padding: const EdgeInsets.symmetric(vertical: 11),
         decoration: BoxDecoration(
           color: selected ? color.withValues(alpha: 0.16) : Colors.transparent,
@@ -248,7 +243,7 @@ class _TargetButton extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
             color: selected ? color : AppColors.textMuted,
-            fontSize: 13,
+            fontSize: 16,
             fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
           ),
         ),

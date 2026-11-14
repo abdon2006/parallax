@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBackground(
-      imageOpacity: 0.82,
+      imageOpacity: 1,
       child: SafeArea(
         child: BlocBuilder<AnalogBloc, AnalogStates>(
           builder: (context, state) {
@@ -226,9 +226,9 @@ class _HomeContent extends StatelessWidget {
         ),
         const SizedBox(height: 10),
 
-        /// List Of Ready Filters
+        /// List Of Presets
         SizedBox(
-          height: 120,
+          height: 150,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: missionPresets.length + 1,
@@ -373,13 +373,13 @@ class _TargetCard extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(22),
       child: AnimatedScale(
-        scale: selected ? 1.1 : 1,
-        duration: const Duration(milliseconds: 260),
-        curve: Curves.easeOutCubic,
+        scale: selected ? 1.02 : 1,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOutCubic,
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 260),
-          curve: Curves.easeOutCubic,
-          height: 204,
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.easeInOutCubic,
+          height: 200,
           padding: const EdgeInsets.fromLTRB(14, 12, 14, 14),
           decoration: BoxDecoration(
             color: AppColors.surface.withValues(alpha: 0.72),
@@ -480,47 +480,55 @@ class _PresetCard extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(18),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 220),
-        width: 138,
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          color: selected
-              ? AppColors.accent.withValues(alpha: 0.12)
-              : AppColors.surface.withValues(alpha: 0.7),
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(
+      child: AnimatedScale(
+        scale : selected ? 1.01 : 1 ,
+        duration: const Duration(milliseconds: 500),
+       curve:  Curves.easeInOutCubic,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 500),
+          curve:  Curves.easeInOutCubic,
+          width: 150,
+          padding: const EdgeInsets.all(12),
+          margin: EdgeInsets.all(
+          2),
+          decoration: BoxDecoration(
             color: selected
-                ? AppColors.accent.withValues(alpha: 0.75)
-                : AppColors.surfaceLight.withValues(alpha: 0.55),
+                ? AppColors.accent.withValues(alpha: 0.12)
+                : AppColors.surface.withValues(alpha: 0.7),
+            borderRadius: BorderRadius.circular(18),
+            border: Border.all(
+              color: selected
+                  ? AppColors.accent.withValues(alpha: 0.75)
+                  : AppColors.surfaceLight.withValues(alpha: 0.55),
+            ),
           ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Icon(
-              preset.icon,
-              color: selected ? AppColors.accent : AppColors.textSecondary,
-              size: 18,
-            ),
-            const Spacer(),
-            Text(
-              preset.name,
-              style: const TextStyle(
-                color: AppColors.textPrimary,
-                fontSize: 12,
-                fontWeight: FontWeight.w700,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Icon(
+                preset.icon,
+                color: selected ? AppColors.accent : AppColors.textSecondary,
+                size: 32,
               ),
-            ),
-            const SizedBox(height: 2),
-            Text(
-              '$count sites',
-              style: TextStyle(
-                color: selected ? AppColors.accent : AppColors.textMuted,
-                fontSize: 9,
+              const Spacer(),
+              Text(
+                preset.name,
+                style: const TextStyle(
+                  color: AppColors.textPrimary,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
-            ),
-          ],
+              const SizedBox(height: 2),
+              Text(
+                '$count sites',
+                style: TextStyle(
+                  color: selected ? AppColors.accent : AppColors.textMuted,
+                  fontSize: 9,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -539,7 +547,8 @@ class _CustomPresetCard extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(18),
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 220),
+        duration: const Duration(milliseconds: 300),
+        curve : Curves.easeInOutCubic,
         width: 138,
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
@@ -559,7 +568,7 @@ class _CustomPresetCard extends StatelessWidget {
             const Icon(
               Icons.tune_rounded,
               color: AppColors.textSecondary,
-              size: 18,
+              size: 24,
             ),
             const Spacer(),
             const Text(
