@@ -151,6 +151,11 @@ results.json → AnalogRepository → AnalogBloc → Screens
 
 ---
 
+## Data Pipeline
+
+The similarity scores were computed separately.
+Source: https://github.com/Zamurai7/Earth-Moon-Mars-analog-finder
+
 ## Running the App
 
 ```bash
